@@ -1,0 +1,184 @@
+html {
+    font-family: 'Arial', Helvetica, sans-serif;
+    font-size:85%;
+}
+body {
+    padding-top:10px;
+}
+.section {
+    max-width:1200px;
+    margin:auto;
+    margin-top: 30px;
+}
+
+.title span {
+    font-weight: 700;
+    font-size:14px;
+}
+
+caption {
+    font-weight: 700;
+    font-size:90%;
+    color: #222;
+    margin-bottom: 6px;
+    text-align:left;
+}
+
+.btn {
+    border: none;
+    padding: 8px 13px;
+    margin-left: 5px;
+} 
+
+.btn-primary {
+    color: white;
+    background: #109fff;
+}
+
+.btn-danger {
+    color: white;
+    background: #f81314;
+}
+
+.filter {
+
+}
+
+.form-group label {
+    display: inline-block;
+    width:110px;
+}
+
+input.form-control {
+    border: 1px solid #00bfff;
+    padding: 6px 10px;
+    width: 60px;
+}
+
+select {
+    border: 1px solid #00bfff;
+    padding: 4px 10px;
+}
+
+.table, .table th, .table td {
+    border: 1px solid #00bfff;
+    border-collapse: collapse;
+    padding: 6px 7px;
+}
+
+.text-center {
+    text-align: center;
+} 
+
+.color-danger {
+    color: #f81314;
+    font-size:80%;
+}
+
+.datagrid {
+    margin-top:20px;
+}
+
+.price {
+    margin-top:7px;
+}
+
+.text-danger {
+    color: #f81314;
+}
+
+
+.title {
+    margin-bottom: 15px;
+}
+
+.row {
+    margin-bottom:10px;
+}
+
+#exchange {
+    border-bottom: 7px double #00bfff!important;
+}
+
+.table {
+    width:100%;
+    border: 2px solid #00bfff;
+    overflow-x:scroll;
+}
+
+.table th {
+    border-bottom: 2px solid #00bfff;
+}
+
+colgroup{
+    border-left: 2px solid #00bfff;
+    border-right: 2px solid #00bfff;
+}
+
+.sel-panel {
+    margin:10px 0 0 115px;
+}
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    background-color: #eee;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .container:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .container input:checked ~ .checkmark {
+    background-color: #00bfff;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .container .checkmark:after {
+    left: 5px;
+    top: 1px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }

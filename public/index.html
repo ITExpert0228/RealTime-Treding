@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RECEN TRADES</title>
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link href="css/app.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="section">
+        <div class="title">
+            <span>RECEN TRADES (CURRENT ACTIVE TRADES) </span>
+            <button class="btn btn-primary">START</button>
+            <button class="btn btn-danger">STOP</button>
+        </div>
+        <div class="filter">
+            <div class="form-group row">
+                <label>Set currency:</label>
+                <input type="text" class="form-control" value="">
+            </div>
+            <div class="form-group row">
+                <label>Select Exchange:</label>
+                <select class="form-control" id="sel-exchange">
+                    <option value="all">Choose Exchange</option>
+                </select>
+                <div class="sel-panel sel1" id="sel1" style="display:none">
+                    <label class="container">Check All<input type="checkbox" class="all" value="" checked="checked"><span class="checkmark"></span></label><br>
+                    <label class="container">binance.com<input type="checkbox" value="binance" checked="checked"><span class="checkmark"></span></label>
+                    <label class="container">binance.us<input type="checkbox" value="binanceus" checked="checked"><span class="checkmark"></span></label>
+                    <label class="container">bittrex.com<input type="checkbox" value="bittrex" checked="checked"><span class="checkmark"></span></label>
+                    <label class="container">bittrexinternational.com<input type="checkbox" value="bittrexinternational" checked="checked"><span class="checkmark"></span></label><br>
+                    <label class="container">kucoin.com<input type="checkbox" value="kucoin" checked="checked"><span class="checkmark"></span></label>
+                    <label class="container">pro.coinbase.com<input type="checkbox" value="coinbasepro" checked="checked"><span class="checkmark"></span></label>
+                    <label class="container">poloniex.com<input type="checkbox" value="poloniex" checked="checked"><span class="checkmark"></span></label>
+                    <label class="container">kraken.com<input type="checkbox" value="kraken" checked="checked"><span class="checkmark"></span></label><br>
+                    <label class="container">bibox.com<input type="checkbox" value="bibox" checked="checked"><span class="checkmark"></span></label>
+                    <label class="container">gemini.com<input type="checkbox" value="gemini" checked="checked"><span class="checkmark"></span></label>
+                    <label class="container">hbg.com<input type="checkbox" value="huobiglobal" checked="checked"><span class="checkmark"></span></label>
+                    <label class="container">hitbtc.com<input type="checkbox" value="hitbtc" checked="checked"><span class="checkmark"></span></label><br>
+                    <label class="container">bitmart.com<input type="checkbox" value="bitmart" checked="checked"><span class="checkmark"></span></label>
+                    <label class="container">bitstamp.net<input type="checkbox" value="bitstamp" checked="checked"><span class="checkmark"></span></label>
+                    <label class="container">okex.com<input type="checkbox" value="okex" checked="checked"><span class="checkmark"></span></label>
+                    <label class="container">bitfinex.com<input type="checkbox" value="bitfinex" checked="checked"><span class="checkmark"></span></label>
+                </div>
+            </div>
+        </div>
+        <table class="table" id="exchange">
+            <thead>
+                <tr>
+                    <th>Exchange</th>
+                    <th>Total BUY (active orders)<t/h>
+                    <th>Total SELL (active orders)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-key="binance">
+                    <td>binance.com</td><td>0 ETH</td><td>0 ETH</td>
+                </tr>
+                <tr data-key="binanceus">
+                    <td>binance.us</td><td>0 ETH</td><td>0 ETH</td>
+                </tr>
+                <tr data-key="bittrex">
+                    <td>bittrex.com</td><td>0 ETH</td><td>0 ETH</td>
+                </tr>
+                <tr data-key="bittrexinternational">
+                    <td>bittrexinternational.com</td><td>0 ETH</td><td>0 ETH</td> 
+                </tr>
+                <tr data-key="kucoin">
+                    <td>kucoin.com</td><td>0 ETH</td><td>0 ETH</td>
+                </tr>
+                <tr data-key="coinbasepro">
+                    <td>pro.coinbase.com</td><td>0 ETH</td><td>0 ETH</td> 
+                </tr>
+                <tr data-key="poloniex">
+                    <td>poloniex.com</td><td>0 ETH</td><td>0 ETH</td>
+                </tr>
+                <tr data-key="kraken">
+                    <td>kraken.com</td><td>0 ETH</td><td>0 ETH</td>   
+                </tr>
+                <tr data-key="bibox">
+                    <td>bibox.com</td><td>0 ETH</td><td>0 ETH</td>
+                </tr>
+                <tr data-key="gemini">
+                    <td>gemini.com</td><td>0 ETH</td><td>0 ETH</td>
+                </tr>
+                <tr data-key="huobiglobal">
+                    <td>hbg.com</td><td>0 ETH</td><td>0 ETH</td>
+                </tr>
+                <tr data-key="hitbtc">
+                    <td>hitbtc.com</td><td>0 ETH</td><td>0 ETH</td>    
+                </tr>
+                <tr data-key="bitmart">
+                    <td>bitmart.com</td><td>0 ETH</td><td>0 ETH</td>   
+                </tr>
+                <tr data-key="bitstamp">
+                    <td>bitstamp.net</td><td>0 ETH</td><td>0 ETH</td>
+                </tr>
+                <tr data-key="okex">
+                    <td>okex.com</td><td>0 ETH</td><td>0 ETH</td>
+                </tr>
+                <tr data-key="bitfinex">
+                    <td>bitfinex.com</td><td>0 ETH</td><td>0 ETH</td>
+                </tr>
+                <tr><td></td><td>Total: 0 ETH</td><td>Total: 0 ETH</td></tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="section">
+        <div class="title"><span>ORDER BOOK</span></div>
+        <div class="filter">
+            <div class="form-group row">
+                <label>Set currency:</label>
+                <input type="text" class="form-control" value="">
+            </div>
+            <div class="form-group row">
+                <label>Select Exchange:</label>
+                <select class="form-control" id="order-exchange">
+                    <option value="all">Choose Exchange</option>
+                </select>
+                <div class="sel-panel sel2" id="sel2" style="display:none">
+                    <label class="container">Check All<input type="checkbox" value="" checked="checked" class="all"><span class="checkmark"></span></label><br>
+                    <label class="container">binance.com<input type="checkbox" value="binance" checked="checked"><span class="checkmark"></span></label>
+                    <label class="container">binance.us<input type="checkbox" value="binanceus" checked="checked"><span class="checkmark"></span></label>
+                    <label class="container">bittrex.com<input type="checkbox" value="bittrex" checked="checked"><span class="checkmark"></span></label>
+                    <label class="container">bittrexinternational.com<input type="checkbox" value="bittrexinternational" checked="checked"><span class="checkmark"></span></label><br>
+                    <label class="container">kucoin.com<input type="checkbox" value="kucoin" checked="checked"><span class="checkmark"></span></label>
+                    <label class="container">pro.coinbase.com<input type="checkbox" value="coinbasepro" checked="checked"><span class="checkmark"></span></label>
+                    <label class="container">poloniex.com<input type="checkbox" value="poloniex" checked="checked"><span class="checkmark"></span></label>
+                    <label class="container">kraken.com<input type="checkbox" value="kraken" checked="checked"><span class="checkmark"></span></label><br>
+                    <label class="container">bibox.com<input type="checkbox" value="bibox" checked="checked"><span class="checkmark"></span></label>
+                    <label class="container">gemini.com<input type="checkbox" value="gemini" checked="checked"><span class="checkmark"></span></label>
+                    <label class="container">hbg.com<input type="checkbox" value="huobiglobal" checked="checked"><span class="checkmark"></span></label>
+                    <label class="container">hitbtc.com<input type="checkbox" value="hitbtc" checked="checked"><span class="checkmark"></span></label><br>
+                    <label class="container">bitmart.com<input type="checkbox" value="bitmart" checked="checked"><span class="checkmark"></span></label>
+                    <label class="container">bitstamp.net<input type="checkbox" value="bitstamp" checked="checked"><span class="checkmark"></span></label>
+                    <label class="container">okex.com<input type="checkbox" value="okex" checked="checked"><span class="checkmark"></span></label>
+                    <label class="container">bitfinex.com<input type="checkbox" value="bitfinex" checked="checked"><span class="checkmark"></span></label>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label>Show results for &nbsp;</label><input type="text" class="form-control" value="5"><label style="width:auto">&nbsp;&nbsp;&nbsp;price range above/below current price</label>
+            </div>
+            <div class="text-center color-danger">GROUPED RESULT, EXAMPLE: 134.10, 134.20, 134.30 ... 134.90, 135.00 WILL BE GROUPED IN ONE RESULT AT 135</div>
+        </div>
+        <div class="datagrid">
+            <table class="table table1" id="aboveGrid">
+                <caption>
+                    PENDING ORDERS ABOVE CURRENT PRICE
+                </caption>
+                <colgroup>
+                    <col>
+                </colgroup>
+                <colgroup>
+                    <col>
+                    <col>
+                    <col>
+                </colgroup>
+                <colgroup>
+                    <col>
+                    <col>
+                    <col>
+                </colgroup>
+                <colgroup>
+                    <col>
+                    <col>
+                    <col>
+                </colgroup>
+                <colgroup>
+                    <col>
+                    <col>
+                    <col>
+                </colgroup>
+                <colgroup>
+                    <col>
+                    <col>
+                    <col>
+                </colgroup>
+                <tr>
+                    <th colspan="1"></th>
+                    <th colspan="3">1</th>
+                    <th colspan="3">2</th>
+                    <th colspan="3">3</th>
+                    <th colspan="3">4</th>
+                    <th colspan="3">5</th>
+                </tr>
+                <tr>
+                    <td>Exchange</td>
+                    <td>At Price</td><td>TOTAL PENDING BUY</td><td>TOTAL PENDING SELL</td>    
+                    <td>At Price</td><td>TOTAL PENDING BUY</td><td>TOTAL PENDING SELL</td>    
+                    <td>At Price</td><td>TOTAL PENDING BUY</td><td>TOTAL PENDING SELL</td>    
+                    <td>At Price</td><td>TOTAL PENDING BUY</td><td>TOTAL PENDING SELL</td>    
+                    <td>At Price</td><td>TOTAL PENDING BUY</td><td>TOTAL PENDING SELL</td>    
+                </tr>
+                <tr data-key="binance">
+                    <td>binance.com</td>
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                </tr>
+                <tr data-key="binanceus">
+                    <td>binance.us</td>
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                </tr>
+                <tr data-key="bittrex">
+                    <td>bittrex.com</td>
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                </tr>
+                <tr data-key="bittrexinternational">
+                    <td>bittrexinternational.com</td>
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                </tr>
+                <tr data-key="kucoin">
+                    <td>kucoin.com</td>
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                </tr>
+                <tr data-key="coinbasepro">
+                    <td>pro.coinbase.com</td>
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                </tr>
+                <tr data-key="poloniex">
+                    <td>poloniex.com</td>
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                </tr>
+                <tr data-key="kraken">
+                    <td>kraken.com</td>
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                </tr>
+                <tr data-key="bibox">
+                    <td>bibox.com</td>
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                </tr>
+                <tr data-key="gemini">
+                    <td>gemini.com</td>
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                </tr>
+                <tr data-key="huobiglobal">
+                    <td>hbg.com</td>
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                </tr>
+                <tr data-key="hitbtc">
+                    <td>hitbtc.com</td>
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                </tr>
+                <tr data-key="bitmart">
+                    <td>bitmart.com</td>
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                </tr>
+                <tr data-key="bitstamp">
+                    <td>bitstamp.net</td>
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                </tr>
+                <tr data-key="okex">
+                    <td>okex.com</td>
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                </tr>
+                <tr data-key="bitfinex">
+                    <td>bitfinex.com</td>
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>000.00 Average Price</td><td>~ ETH Total</td><td></td>
+                    <td>000.00 Average Price</td><td>~ ETH Total</td><td></td>
+                    <td>000.00 Average Price</td><td>~ ETH Total</td><td></td>
+                    <td>000.00 Average Price</td><td>~ ETH Total</td><td></td>
+                    <td>000.00 Average Price</td><td>~ ETH Total</td><td></td>
+                </tr>
+            </table>
+            <div class="price">Current Price: <span class="text-danger">130</span></div>
+        </div>
+
+        <div class="datagrid">
+            <table class="table table1" id="belowGrid">
+                <caption>
+                    PENDING ORDERS BELOW CURRENT PRICE
+                </caption>
+                <colgroup>
+                    <col>
+                </colgroup>
+                <colgroup>
+                    <col>
+                    <col>
+                    <col>
+                </colgroup>
+                <colgroup>
+                    <col>
+                    <col>
+                    <col>
+                </colgroup>
+                <colgroup>
+                    <col>
+                    <col>
+                    <col>
+                </colgroup>
+                <colgroup>
+                    <col>
+                    <col>
+                    <col>
+                </colgroup>
+                <colgroup>
+                    <col>
+                    <col>
+                    <col>
+                </colgroup>
+                <tr>
+                    <th colspan="1"></th>
+                    <th colspan="3">1</th>
+                    <th colspan="3">2</th>
+                    <th colspan="3">3</th>
+                    <th colspan="3">4</th>
+                    <th colspan="3">5</th>
+                </tr>
+                <tr>
+                    <td>Exchange</td>
+                    <td>At Price</td><td>TOTAL PENDING BUY</td><td>TOTAL PENDING SELL</td>    
+                    <td>At Price</td><td>TOTAL PENDING BUY</td><td>TOTAL PENDING SELL</td>    
+                    <td>At Price</td><td>TOTAL PENDING BUY</td><td>TOTAL PENDING SELL</td>    
+                    <td>At Price</td><td>TOTAL PENDING BUY</td><td>TOTAL PENDING SELL</td>    
+                    <td>At Price</td><td>TOTAL PENDING BUY</td><td>TOTAL PENDING SELL</td>    
+                </tr>
+                <tr data-key="binance">
+                    <td>binance.com</td>
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                </tr>
+                <tr data-key="binanceus">
+                    <td>binance.us</td>
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                </tr>
+                <tr data-key="bittrex">
+                    <td>bittrex.com</td>
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                </tr>
+                <tr data-key="bittrexinternational">
+                    <td>bittrexinternational.com</td>
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                </tr>
+                <tr data-key="kucoin">
+                    <td>kucoin.com</td>
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                </tr>
+                <tr data-key="coinbasepro">
+                    <td>pro.coinbase.com</td>
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                </tr>
+                <tr data-key="poloniex">
+                    <td>poloniex.com</td>
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                </tr>
+                <tr data-key="kraken">
+                    <td>kraken.com</td>
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                </tr>
+                <tr data-key="bibox">
+                    <td>bibox.com</td>
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                </tr>
+                <tr data-key="gemini">
+                    <td>gemini.com</td>
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                </tr>
+                <tr data-key="huobiglobal">
+                    <td>hbg.com</td>
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                </tr>
+                <tr data-key="hitbtc">
+                    <td>hitbtc.com</td>
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                </tr>
+                <tr data-key="bitmart">
+                    <td>bitmart.com</td>
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                </tr>
+                <tr data-key="bitstamp">
+                    <td>bitstamp.net</td>
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                </tr>
+                <tr data-key="okex">
+                    <td>okex.com</td>
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                </tr>
+                <tr data-key="bitfinex">
+                    <td>bitfinex.com</td>
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                    <td>131</td><td>150</td><td>120</td>    
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>000.00 Average Price</td><td>~ ETH Total</td><td></td>
+                    <td>000.00 Average Price</td><td>~ ETH Total</td><td></td>
+                    <td>000.00 Average Price</td><td>~ ETH Total</td><td></td>
+                    <td>000.00 Average Price</td><td>~ ETH Total</td><td></td>
+                    <td>000.00 Average Price</td><td>~ ETH Total</td><td></td>
+                </tr>
+            </table>
+        </div>
+        <br>
+        <br>
+        <br>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-migrate-3.0.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
