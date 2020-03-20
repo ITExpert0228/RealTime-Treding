@@ -3,21 +3,25 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RECEN TRADES</title>
-    <link rel="shortcut icon" href="images/favicon.ico">
+    <title>TRADES | ORDER BOOK</title>
+    <link rel="shortcut icon" href="node.svg">
     <link href="css/app.css" rel="stylesheet" type="text/css">
+    <link href="css/loading.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <div class="section">
         <div class="title">
             <span>RECEN TRADES (CURRENT ACTIVE TRADES) </span>
-            <button class="btn btn-primary">START</button>
-            <button class="btn btn-danger">STOP</button>
+            <button id="start" class="btn btn-primary">START</button>
+            <button id="stop" class="btn btn-danger">STOP</button>
         </div>
         <div class="filter">
             <div class="form-group row">
                 <label>Set currency:</label>
-                <input type="text" class="form-control" value="">
+                <select class="form-control" id="sel-currency">
+                    <option value="ETH" selected>ETH</option>
+                    <option value="LTC">LTC</option>
+                </select>
             </div>
             <div class="form-group row">
                 <label>Select Exchange:</label>
@@ -55,54 +59,54 @@
             </thead>
             <tbody>
                 <tr data-key="binance">
-                    <td>binance.com</td><td>0 ETH</td><td>0 ETH</td>
+                    <td>binance.com</td><td>-</td><td>-</td>
                 </tr>
                 <tr data-key="binanceus">
-                    <td>binance.us</td><td>0 ETH</td><td>0 ETH</td>
+                    <td>binance.us</td><td>-</td><td>-</td>
                 </tr>
                 <tr data-key="bittrex">
-                    <td>bittrex.com</td><td>0 ETH</td><td>0 ETH</td>
+                    <td>bittrex.com</td><td>-</td><td>-</td>
                 </tr>
                 <tr data-key="bittrexinternational">
-                    <td>bittrexinternational.com</td><td>0 ETH</td><td>0 ETH</td> 
+                    <td>bittrexinternational.com</td><td>-</td><td>-</td> 
                 </tr>
                 <tr data-key="kucoin">
-                    <td>kucoin.com</td><td>0 ETH</td><td>0 ETH</td>
+                    <td>kucoin.com</td><td>-</td><td>-</td>
                 </tr>
                 <tr data-key="coinbasepro">
-                    <td>pro.coinbase.com</td><td>0 ETH</td><td>0 ETH</td> 
+                    <td>pro.coinbase.com</td><td>-</td><td>-</td> 
                 </tr>
                 <tr data-key="poloniex">
-                    <td>poloniex.com</td><td>0 ETH</td><td>0 ETH</td>
+                    <td>poloniex.com</td><td>-</td><td>-</td>
                 </tr>
                 <tr data-key="kraken">
-                    <td>kraken.com</td><td>0 ETH</td><td>0 ETH</td>   
+                    <td>kraken.com</td><td>-</td><td>-</td>   
                 </tr>
                 <tr data-key="bibox">
-                    <td>bibox.com</td><td>0 ETH</td><td>0 ETH</td>
+                    <td>bibox.com</td><td>-</td><td>-</td>
                 </tr>
                 <tr data-key="gemini">
-                    <td>gemini.com</td><td>0 ETH</td><td>0 ETH</td>
+                    <td>gemini.com</td><td>-</td><td>-</td>
                 </tr>
                 <tr data-key="huobiglobal">
-                    <td>hbg.com</td><td>0 ETH</td><td>0 ETH</td>
+                    <td>hbg.com</td><td>-</td><td>-</td>
                 </tr>
                 <tr data-key="hitbtc">
-                    <td>hitbtc.com</td><td>0 ETH</td><td>0 ETH</td>    
+                    <td>hitbtc.com</td><td>-</td><td>-</td>    
                 </tr>
                 <tr data-key="bitmart">
-                    <td>bitmart.com</td><td>0 ETH</td><td>0 ETH</td>   
+                    <td>bitmart.com</td><td>-</td><td>-</td>   
                 </tr>
                 <tr data-key="bitstamp">
-                    <td>bitstamp.net</td><td>0 ETH</td><td>0 ETH</td>
+                    <td>bitstamp.net</td><td>-</td><td>-</td>
                 </tr>
                 <tr data-key="okex">
-                    <td>okex.com</td><td>0 ETH</td><td>0 ETH</td>
+                    <td>okex.com</td><td>-</td><td>-</td>
                 </tr>
                 <tr data-key="bitfinex">
-                    <td>bitfinex.com</td><td>0 ETH</td><td>0 ETH</td>
+                    <td>bitfinex.com</td><td>-</td><td>-</td>
                 </tr>
-                <tr><td></td><td>Total: 0 ETH</td><td>Total: 0 ETH</td></tr>
+                <tr><td></td><td id="tBuy">Total: -</td><td id="tSell">Total: -</td></tr>
             </tbody>
         </table>
     </div>
@@ -111,7 +115,10 @@
         <div class="filter">
             <div class="form-group row">
                 <label>Set currency:</label>
-                <input type="text" class="form-control" value="">
+                <select class="form-control" id="sel-currency1">
+                    <option value="ETH" selected>ETH</option>
+                    <option value="LTC">LTC</option>
+                </select>
             </div>
             <div class="form-group row">
                 <label>Select Exchange:</label>
@@ -139,7 +146,7 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label>Show results for &nbsp;</label><input type="text" class="form-control" value="5"><label style="width:auto">&nbsp;&nbsp;&nbsp;price range above/below current price</label>
+                <label>Show results for &nbsp;</label><input type="text" id="level" class="form-control" value="5"><label style="width:auto">&nbsp;&nbsp;&nbsp;price range above/below current price</label>
             </div>
             <div class="text-center color-danger">GROUPED RESULT, EXAMPLE: 134.10, 134.20, 134.30 ... 134.90, 135.00 WILL BE GROUPED IN ONE RESULT AT 135</div>
         </div>
@@ -194,139 +201,139 @@
                 </tr>
                 <tr data-key="binance">
                     <td>binance.com</td>
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
                 </tr>
                 <tr data-key="binanceus">
                     <td>binance.us</td>
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
                 </tr>
                 <tr data-key="bittrex">
                     <td>bittrex.com</td>
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
                 </tr>
                 <tr data-key="bittrexinternational">
                     <td>bittrexinternational.com</td>
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
                 </tr>
                 <tr data-key="kucoin">
                     <td>kucoin.com</td>
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>       
                 </tr>
                 <tr data-key="coinbasepro">
                     <td>pro.coinbase.com</td>
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>     
                 </tr>
                 <tr data-key="poloniex">
                     <td>poloniex.com</td>
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>       
                 </tr>
                 <tr data-key="kraken">
                     <td>kraken.com</td>
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>       
                 </tr>
                 <tr data-key="bibox">
                     <td>bibox.com</td>
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>       
                 </tr>
                 <tr data-key="gemini">
                     <td>gemini.com</td>
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>       
                 </tr>
                 <tr data-key="huobiglobal">
                     <td>hbg.com</td>
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>       
                 </tr>
                 <tr data-key="hitbtc">
                     <td>hitbtc.com</td>
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>       
                 </tr>
                 <tr data-key="bitmart">
                     <td>bitmart.com</td>
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>        
                 </tr>
                 <tr data-key="bitstamp">
                     <td>bitstamp.net</td>
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>        
                 </tr>
                 <tr data-key="okex">
                     <td>okex.com</td>
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>        
                 </tr>
                 <tr data-key="bitfinex">
                     <td>bitfinex.com</td>
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>        
                 </tr>
                 <tr>
                     <td></td>
-                    <td>000.00 Average Price</td><td>~ ETH Total</td><td></td>
-                    <td>000.00 Average Price</td><td>~ ETH Total</td><td></td>
-                    <td>000.00 Average Price</td><td>~ ETH Total</td><td></td>
-                    <td>000.00 Average Price</td><td>~ ETH Total</td><td></td>
-                    <td>000.00 Average Price</td><td>~ ETH Total</td><td></td>
+                    <td>000.00</td><td>-</td><td>-</td>
+                    <td>000.00</td><td>-</td><td>-</td>
+                    <td>000.00</td><td>-</td><td>-</td>
+                    <td>000.00</td><td>-</td><td>-</td>
+                    <td>000.00</td><td>-</td><td>-</td>
                 </tr>
             </table>
             <div class="price">Current Price: <span class="text-danger">130</span></div>
@@ -383,139 +390,139 @@
                 </tr>
                 <tr data-key="binance">
                     <td>binance.com</td>
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
                 </tr>
                 <tr data-key="binanceus">
                     <td>binance.us</td>
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
                 </tr>
                 <tr data-key="bittrex">
                     <td>bittrex.com</td>
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
                 </tr>
                 <tr data-key="bittrexinternational">
                     <td>bittrexinternational.com</td>
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
                 </tr>
                 <tr data-key="kucoin">
                     <td>kucoin.com</td>
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>       
                 </tr>
                 <tr data-key="coinbasepro">
                     <td>pro.coinbase.com</td>
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>     
                 </tr>
                 <tr data-key="poloniex">
                     <td>poloniex.com</td>
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>       
                 </tr>
                 <tr data-key="kraken">
                     <td>kraken.com</td>
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>       
                 </tr>
                 <tr data-key="bibox">
                     <td>bibox.com</td>
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>       
                 </tr>
                 <tr data-key="gemini">
                     <td>gemini.com</td>
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>       
                 </tr>
                 <tr data-key="huobiglobal">
                     <td>hbg.com</td>
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>       
                 </tr>
                 <tr data-key="hitbtc">
                     <td>hitbtc.com</td>
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>       
                 </tr>
                 <tr data-key="bitmart">
                     <td>bitmart.com</td>
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>        
                 </tr>
                 <tr data-key="bitstamp">
                     <td>bitstamp.net</td>
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>        
                 </tr>
                 <tr data-key="okex">
                     <td>okex.com</td>
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>        
                 </tr>
                 <tr data-key="bitfinex">
                     <td>bitfinex.com</td>
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
-                    <td>131</td><td>150</td><td>120</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>    
+                    <td>-</td><td>-</td><td>-</td>        
                 </tr>
                 <tr>
                     <td></td>
-                    <td>000.00 Average Price</td><td>~ ETH Total</td><td></td>
-                    <td>000.00 Average Price</td><td>~ ETH Total</td><td></td>
-                    <td>000.00 Average Price</td><td>~ ETH Total</td><td></td>
-                    <td>000.00 Average Price</td><td>~ ETH Total</td><td></td>
-                    <td>000.00 Average Price</td><td>~ ETH Total</td><td></td>
+                    <td>000.00</td><td>-</td><td>-</td>
+                    <td>000.00</td><td>-</td><td>-</td>
+                    <td>000.00</td><td>-</td><td>-</td>
+                    <td>000.00</td><td>-</td><td>-</td>
+                    <td>000.00</td><td>-</td><td>-</td>
                 </tr>
             </table>
         </div>
@@ -527,6 +534,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-migrate-3.0.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+    <script src="js/loading.js"></script>
     <script src="js/app.js"></script>
+    
 </body>
 </html>

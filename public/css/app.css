@@ -40,6 +40,10 @@ caption {
     background: #f81314;
 }
 
+button:disabled, button[disabled]{
+    opacity: 0.2;
+}
+
 .filter {
 
 }
