@@ -19,8 +19,12 @@
             <div class="form-group row">
                 <label>Set currency:</label>
                 <select class="form-control" id="sel-currency">
-                    <option value="ETH" selected>ETH</option>
-                    <option value="LTC">LTC</option>
+                    <option value="eth-usd">ETH-USD</option>
+                    <!-- <option value="eth-btc">ETH-BTC</option>
+                    <option value="eth-usdt">ETH-USDT</option> -->
+                    <option value="ltc-usd">LTC-USD</option>
+                    <!-- <option value="ltc-btc">LTC-BTC</option>
+                    <option value="ltc-usdt">LTC-USDT</option> -->
                 </select>
             </div>
             <div class="form-group row">
@@ -106,7 +110,7 @@
                 <tr data-key="bitfinex">
                     <td>bitfinex.com</td><td>-</td><td>-</td>
                 </tr>
-                <tr><td></td><td id="tBuy">Total: -</td><td id="tSell">Total: -</td></tr>
+                <tr class="statistic"><td></td><td id="tBuy">Total: -</td><td id="tSell">Total: -</td></tr>
             </tbody>
         </table>
     </div>
@@ -116,8 +120,12 @@
             <div class="form-group row">
                 <label>Set currency:</label>
                 <select class="form-control" id="sel-currency1">
-                    <option value="ETH" selected>ETH</option>
-                    <option value="LTC">LTC</option>
+                    <option value="eth-usd">ETH-USD</option>
+                    <!-- <option value="eth-btc">ETH-BTC</option>
+                    <option value="eth-usdt">ETH-USDT</option> -->
+                    <option value="ltc-usd">LTC-USD</option>
+                    <!-- <option value="ltc-btc">LTC-BTC</option>
+                    <option value="ltc-usdt">LTC-USDT</option> -->
                 </select>
             </div>
             <div class="form-group row">
@@ -146,7 +154,7 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label>Show results for &nbsp;</label><input type="text" id="level" class="form-control" value="5"><label style="width:auto">&nbsp;&nbsp;&nbsp;price range above/below current price</label>
+                <label>Show results for &nbsp;</label><input type="number" max="5" min="1" id="level" class="form-control" value="5"><label style="width:auto">&nbsp;&nbsp;&nbsp;price range above/below current price</label>
             </div>
             <div class="text-center color-danger">GROUPED RESULT, EXAMPLE: 134.10, 134.20, 134.30 ... 134.90, 135.00 WILL BE GROUPED IN ONE RESULT AT 135</div>
         </div>
@@ -327,7 +335,7 @@
                     <td>-</td><td>-</td><td>-</td>    
                     <td>-</td><td>-</td><td>-</td>        
                 </tr>
-                <tr>
+                <tr class="statistic">
                     <td></td>
                     <td>000.00</td><td>-</td><td>-</td>
                     <td>000.00</td><td>-</td><td>-</td>
@@ -336,7 +344,7 @@
                     <td>000.00</td><td>-</td><td>-</td>
                 </tr>
             </table>
-            <div class="price">Current Price: <span class="text-danger">130</span></div>
+            <div class="price">Current Price: <span class="text-danger" id="currentPrice">-</span></div>
         </div>
 
         <div class="datagrid">
@@ -516,7 +524,7 @@
                     <td>-</td><td>-</td><td>-</td>    
                     <td>-</td><td>-</td><td>-</td>        
                 </tr>
-                <tr>
+                <tr class="statistic">
                     <td></td>
                     <td>000.00</td><td>-</td><td>-</td>
                     <td>000.00</td><td>-</td><td>-</td>
